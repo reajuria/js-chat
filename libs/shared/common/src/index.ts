@@ -1,3 +1,4 @@
+export * from './lib/command';
 export * from './lib/conversation';
 export * from './lib/document';
 export * from './lib/message';
