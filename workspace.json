@@ -80,6 +80,46 @@
           }
         }
       }
+    },
+    "repository-redis": {
+      "root": "libs/repository/redis",
+      "sourceRoot": "libs/repository/redis/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/repository/redis/**/*.ts"
+            ]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": [
+            "coverage/libs/repository/redis"
+          ],
+          "options": {
+            "jestConfig": "libs/repository/redis/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "build": {
+          "executor": "@nrwl/node:package",
+          "outputs": [
+            "{options.outputPath}"
+          ],
+          "options": {
+            "outputPath": "dist/libs/repository/redis",
+            "tsConfig": "libs/repository/redis/tsconfig.lib.json",
+            "packageJson": "libs/repository/redis/package.json",
+            "main": "libs/repository/redis/src/index.ts",
+            "assets": [
+              "libs/repository/redis/*.md"
+            ]
+          }
+        }
+      }
     }
   },
   "cli": {
