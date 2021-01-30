@@ -30,3 +30,5 @@ export class Message extends Document {
     this.sentMessageSubject.next(this.sent);
   }
 }
+
+export type MessageData = DocumentDefinition<Message>;

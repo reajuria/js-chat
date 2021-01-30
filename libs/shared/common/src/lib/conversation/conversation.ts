@@ -55,3 +55,5 @@ export class Conversation extends Document {
     return message;
   }
 }
+
+export type ConversationData = DocumentDefinition<Conversation>;

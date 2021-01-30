@@ -24,3 +24,5 @@ export class User extends Document {
     this.password = input.password;
   }
 }
+
+export type UserData = DocumentDefinition<User>;

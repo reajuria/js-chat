@@ -23,3 +23,5 @@ export class Command extends Document {
     this.defaultParams = input.defaultParams;
   }
 }
+
+export type CommandData = DocumentDefinition<Command>;

@@ -37,3 +37,5 @@ export class Room extends Document {
     }
   }
 }
+
+export type RoomData = DocumentDefinition<Room>;
