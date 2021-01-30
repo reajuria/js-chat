@@ -7,6 +7,10 @@ const pool: { [alias: string]: redis.Redis } = {};
 
 @Injectable()
 export class RedisConnectionService {
+  constructor() {
+    this.createConnection();
+  }
+
   createConnection(alias = 'default') {
     if (isNil(pool[alias])) {
       pool[alias] = redis(redisEnvironment.port, redisEnvironment.host, {
