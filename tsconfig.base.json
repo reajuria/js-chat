@@ -15,7 +15,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@js-chat/common": ["libs/shared/common/src/index.ts"]
+      "@js-chat/common": ["libs/shared/common/src/index.ts"],
+      "@js-chat/repository": ["libs/shared/repository/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

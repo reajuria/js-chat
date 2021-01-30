@@ -40,6 +40,46 @@
           }
         }
       }
+    },
+    "shared-repository": {
+      "root": "libs/shared/repository",
+      "sourceRoot": "libs/shared/repository/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/shared/repository/**/*.ts"
+            ]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": [
+            "coverage/libs/shared/repository"
+          ],
+          "options": {
+            "jestConfig": "libs/shared/repository/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "build": {
+          "executor": "@nrwl/node:package",
+          "outputs": [
+            "{options.outputPath}"
+          ],
+          "options": {
+            "outputPath": "dist/libs/shared/repository",
+            "tsConfig": "libs/shared/repository/tsconfig.lib.json",
+            "packageJson": "libs/shared/repository/package.json",
+            "main": "libs/shared/repository/src/index.ts",
+            "assets": [
+              "libs/shared/repository/*.md"
+            ]
+          }
+        }
+      }
     }
   },
   "cli": {
