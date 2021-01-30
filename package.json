@@ -46,6 +46,7 @@
     "@nrwl/tao": "11.2.5",
     "@nrwl/workspace": "11.2.5",
     "@types/crypto-js": "^4.0.1",
+    "@types/ioredis": "^4.19.3",
     "@types/jest": "26.0.8",
     "@types/lodash": "^4.14.168",
     "@types/node": "12.12.38",

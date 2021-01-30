@@ -18,6 +18,7 @@
   "projects": {
     "shared-common": { "tags": [] },
     "shared-repository": { "tags": [] },
-    "repository-redis": { "tags": [] }
+    "repository-redis": { "tags": [] },
+    "shared-redis-connection": { "tags": [] }
   }
 }

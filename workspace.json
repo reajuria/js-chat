@@ -120,6 +120,46 @@
           }
         }
       }
+    },
+    "shared-redis-connection": {
+      "root": "libs/shared/redis-connection",
+      "sourceRoot": "libs/shared/redis-connection/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/shared/redis-connection/**/*.ts"
+            ]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": [
+            "coverage/libs/shared/redis-connection"
+          ],
+          "options": {
+            "jestConfig": "libs/shared/redis-connection/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "build": {
+          "executor": "@nrwl/node:package",
+          "outputs": [
+            "{options.outputPath}"
+          ],
+          "options": {
+            "outputPath": "dist/libs/shared/redis-connection",
+            "tsConfig": "libs/shared/redis-connection/tsconfig.lib.json",
+            "packageJson": "libs/shared/redis-connection/package.json",
+            "main": "libs/shared/redis-connection/src/index.ts",
+            "assets": [
+              "libs/shared/redis-connection/*.md"
+            ]
+          }
+        }
+      }
     }
   },
   "cli": {
