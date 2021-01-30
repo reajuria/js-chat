@@ -4,7 +4,7 @@ describe('Command', () => {
   it('should be defined', () => {
     const command = new Command({
       name: 'Get stock info',
-      pattern: /\/stock=[\w._-]+$/i,
+      patternString: '/stock=[\\w._-]+$',
       label: '/stock=appl.us',
       queue: 'stocks_bot',
     });
@@ -17,7 +17,7 @@ describe('Command', () => {
   it('pattern should match', () => {
     const command = new Command({
       name: 'Get stock info',
-      pattern: /\/stock=[\w._-]+$/i,
+      patternString: '/stock=[\\w._-]+$',
       label: '/stock=appl.us',
       queue: 'stocks_bot',
     });
