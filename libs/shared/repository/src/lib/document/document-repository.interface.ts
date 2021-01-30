@@ -1,10 +1,15 @@
-import { Document, DocumentDefinition, ObjectId } from '@js-chat/common';
+import {
+  Document,
+  DocumentDefinition,
+  ObjectId,
+  PartialDocument,
+} from '@js-chat/common';
 import { Observable } from 'rxjs';
 
 export interface DocumentRepository<
   T extends Document,
   D = DocumentDefinition<T>,
-  Q = Partial<D>
+  Q = PartialDocument<T>
 > {
   documentChange$?: Observable<D>;
   insert(input: D): Promise<T>;

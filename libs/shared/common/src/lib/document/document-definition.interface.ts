@@ -2,11 +2,14 @@
 import { Observable } from 'rxjs';
 import { Document } from './document';
 
-type NonFunctionPropertyNames<T> = {
-  [K in keyof T]: T[K] extends Function | Observable<any> ? never : K;
+export type DocumentFields<T extends Document> = {
+  [K in keyof T]: T[K] extends Function | Observable<any> | RegExp ? never : K;
 }[keyof T];
 
-export type DocumentDefinition<T extends Partial<Document> = Document> = Pick<
-  T,
-  NonFunctionPropertyNames<T>
->;
+export type DocumentDefinition<T extends Document> = {
+  [K in keyof Pick<T, DocumentFields<T>>]: T[K];
+};
+
+export type PartialDocument<T extends Document> = {
+  [K in keyof Partial<Pick<T, DocumentFields<T>>>]: T[K];
+};

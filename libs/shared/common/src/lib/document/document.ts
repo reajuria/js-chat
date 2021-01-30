@@ -1,4 +1,4 @@
-import { isEmpty, isFunction, isNil, omitBy } from 'lodash';
+import { isEmpty, isFunction, isNil, isRegExp, omitBy } from 'lodash';
 import { isObservable } from 'rxjs';
 import { DocumentDefinition } from './document-definition.interface';
 import { ObjectId } from './object-id';
@@ -7,7 +7,7 @@ export class Document {
   id?: ObjectId;
   timestamp?: number;
 
-  constructor(input?: DocumentDefinition) {
+  constructor(input?: DocumentDefinition<Document>) {
     if (isNil(input?.id) || isNil(input) || isEmpty(input)) {
       this.id = ObjectId();
       this.timestamp = new Date().getTime();
@@ -19,7 +19,7 @@ export class Document {
 
   toJSON() {
     return omitBy(this, (item) => {
-      return isFunction(item) || isObservable(item);
+      return isFunction(item) || isObservable(item) || isRegExp(item);
     }) as DocumentDefinition<this>;
   }
 
