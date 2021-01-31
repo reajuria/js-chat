@@ -19,6 +19,7 @@
     "shared-common": { "tags": [] },
     "shared-repository": { "tags": [] },
     "repository-redis": { "tags": [] },
-    "shared-redis-connection": { "tags": [] }
+    "shared-redis-connection": { "tags": [] },
+    "data-api": { "tags": [] }
   }
 }

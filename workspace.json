@@ -160,9 +160,69 @@
           }
         }
       }
+    },
+    "data-api": {
+      "root": "apps/data-api",
+      "sourceRoot": "apps/data-api/src",
+      "projectType": "application",
+      "prefix": "data-api",
+      "targets": {
+        "build": {
+          "executor": "@nrwl/node:build",
+          "outputs": [
+            "{options.outputPath}"
+          ],
+          "options": {
+            "outputPath": "dist/apps/data-api",
+            "main": "apps/data-api/src/main.ts",
+            "tsConfig": "apps/data-api/tsconfig.app.json",
+            "assets": [
+              "apps/data-api/src/assets"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "optimization": true,
+              "extractLicenses": true,
+              "inspect": false,
+              "fileReplacements": [
+                {
+                  "replace": "apps/data-api/src/environments/environment.ts",
+                  "with": "apps/data-api/src/environments/environment.prod.ts"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "executor": "@nrwl/node:execute",
+          "options": {
+            "buildTarget": "data-api:build"
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "apps/data-api/**/*.ts"
+            ]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": [
+            "coverage/apps/data-api"
+          ],
+          "options": {
+            "jestConfig": "apps/data-api/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
     }
   },
   "cli": {
-    "defaultCollection": "@nrwl/workspace"
-  }
+    "defaultCollection": "@nrwl/nest"
+  },
+  "defaultProject": "data-api"
 }

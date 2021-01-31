@@ -4,5 +4,6 @@ module.exports = {
     '<rootDir>/libs/shared/repository',
     '<rootDir>/libs/repository/redis',
     '<rootDir>/libs/shared/redis-connection',
+    '<rootDir>/apps/data-api',
   ],
 };
