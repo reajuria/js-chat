@@ -10,6 +10,7 @@ export class User extends Document {
     return hmacSHA512(password, key);
   }
 
+  alias: string;
   username: string;
   password?: string;
 
@@ -20,6 +21,7 @@ export class User extends Document {
       throw USER_ERROR_EMPTY;
     }
 
+    this.alias = input.alias;
     this.username = input.username;
     this.password = input.password;
   }

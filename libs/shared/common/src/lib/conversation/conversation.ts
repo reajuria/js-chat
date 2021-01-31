@@ -11,6 +11,7 @@ export class Conversation extends Document {
 
   readonly key: string;
   readonly participants: ObjectId[];
+  readonly room?: ObjectId;
   updated?: number;
 
   constructor(input?: DocumentDefinition<Conversation>) {
@@ -21,6 +22,7 @@ export class Conversation extends Document {
       isNil(input?.key) || isEmpty(input?.key)
         ? generateSignedRandomKey()
         : input.key;
+    this.room = input?.room;
     this.updated = isNil(input?.updated) ? this.timestamp : input.updated;
   }
 

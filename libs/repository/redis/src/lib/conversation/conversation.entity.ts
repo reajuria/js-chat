@@ -13,6 +13,9 @@ export class ConversationEntity extends BaseEntity implements ConversationData {
   participants: string[];
 
   @Column()
+  room?: string;
+
+  @Column()
   updated?: number;
 
   @Column()
