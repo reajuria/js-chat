@@ -13,7 +13,7 @@ export class RedisConnectionService {
 
   createConnection(alias = 'default') {
     if (isNil(pool[alias])) {
-      pool[alias] = redis(redisEnvironment.port, redisEnvironment.host, {
+      pool[alias] = new redis(redisEnvironment.port, redisEnvironment.host, {
         ...redisEnvironment.properties,
       });
     }

@@ -1,4 +1,4 @@
-import { URL } from 'url';
+import { parse } from 'url';
 
 const DEFAULT_URI = 'redis://localhost:6379';
 
@@ -10,10 +10,12 @@ export const redisEnvironment = {
 };
 
 try {
-  const uri = new URL(redisEnvironment.uri);
+  const uri = parse(redisEnvironment.uri, true);
   redisEnvironment.host = uri.hostname;
   redisEnvironment.port = Number(uri.port || '6379');
-  redisEnvironment.properties = uri.searchParams || {};
+  redisEnvironment.properties = {
+    ...(uri?.query || {}),
+  };
   console.log(redisEnvironment);
 } catch (error) {
   console.error('Redis Environment error', error);
