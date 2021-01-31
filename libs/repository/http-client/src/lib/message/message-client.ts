@@ -7,6 +7,6 @@ export class MessageHttpClient
   extends DocumentBaseClient<Message>
   implements MessageRepository {
   constructor(readonly axios: AxiosInstance) {
-    super(axios, '/messages');
+    super(axios, '/messages', Message);
   }
 }

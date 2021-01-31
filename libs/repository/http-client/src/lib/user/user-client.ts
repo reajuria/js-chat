@@ -7,6 +7,6 @@ export class UserHttpClient
   extends DocumentBaseClient<User>
   implements UserRepository {
   constructor(readonly axios: AxiosInstance) {
-    super(axios, '/users');
+    super(axios, '/users', User);
   }
 }

@@ -8,7 +8,7 @@ export class ConversationHttpClient
   extends DocumentBaseClient<Conversation>
   implements ConversationRepository {
   constructor(readonly axios: AxiosInstance) {
-    super(axios, '/conversations');
+    super(axios, '/conversations', Conversation);
   }
   newMessage$: Observable<Message>;
   createMessage(user: User, contents: string): Promise<Message> {

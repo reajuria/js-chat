@@ -7,6 +7,6 @@ export class RoomHttpClient
   extends DocumentBaseClient<Room>
   implements RoomRepository {
   constructor(readonly axios: AxiosInstance) {
-    super(axios, '/rooms');
+    super(axios, '/rooms', Room);
   }
 }

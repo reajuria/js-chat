@@ -7,7 +7,7 @@ export class CommandHttpClient
   extends DocumentBaseClient<Command>
   implements CommandRepository {
   constructor(readonly axios: AxiosInstance) {
-    super(axios, '/commands');
+    super(axios, '/commands', Command);
   }
   execute(command: string, input: Record<string, string>): Promise<void> {
     throw new Error('Method not implemented.');
