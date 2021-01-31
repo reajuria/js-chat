@@ -1,6 +1,6 @@
 import { Document, DocumentDefinition, PartialDocument } from '@js-chat/common';
 import { DocumentRepository } from '@js-chat/repository';
-import { Body, Delete, Get, Param, Patch, Post } from '@nestjs/common';
+import { Body, Delete, Get, Param, Patch, Post, Query } from '@nestjs/common';
 import { Observable } from 'rxjs';
 
 export class DocumentBaseController<
@@ -17,12 +17,12 @@ export class DocumentBaseController<
   }
 
   @Get()
-  async find(query: PartialDocument<T>): Promise<T[]> {
+  async find(@Query() query: PartialDocument<T>): Promise<T[]> {
     return await this.repository.find(query);
   }
 
   @Get()
-  async findOne(query: PartialDocument<T>): Promise<T> {
+  async findOne(@Query() query: PartialDocument<T>): Promise<T> {
     return await this.repository.findOne(query);
   }
 
