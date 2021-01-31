@@ -28,6 +28,9 @@
       "@js-chat/ng-api-client": ["libs/repository/ng-api-client/src/index.ts"],
       "@js-chat/conversation-gateway": [
         "libs/conversation/gateway/src/index.ts"
+      ],
+      "@js-chat/core-api-client": [
+        "libs/repository/core-api-client/src/index.ts"
       ]
     }
   },

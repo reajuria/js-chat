@@ -10,5 +10,6 @@ module.exports = {
     '<rootDir>/libs/repository/http-client',
     '<rootDir>/libs/repository/ng-api-client',
     '<rootDir>/libs/conversation/gateway',
+    '<rootDir>/libs/repository/core-api-client',
   ],
 };

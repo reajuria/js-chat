@@ -510,6 +510,46 @@
           }
         }
       }
+    },
+    "repository-core-api-client": {
+      "root": "libs/repository/core-api-client",
+      "sourceRoot": "libs/repository/core-api-client/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/repository/core-api-client/**/*.ts"
+            ]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": [
+            "coverage/libs/repository/core-api-client"
+          ],
+          "options": {
+            "jestConfig": "libs/repository/core-api-client/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "build": {
+          "executor": "@nrwl/node:package",
+          "outputs": [
+            "{options.outputPath}"
+          ],
+          "options": {
+            "outputPath": "dist/libs/repository/core-api-client",
+            "tsConfig": "libs/repository/core-api-client/tsconfig.lib.json",
+            "packageJson": "libs/repository/core-api-client/package.json",
+            "main": "libs/repository/core-api-client/src/index.ts",
+            "assets": [
+              "libs/repository/core-api-client/*.md"
+            ]
+          }
+        }
+      }
     }
   },
   "cli": {
