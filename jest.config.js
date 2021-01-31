@@ -6,5 +6,6 @@ module.exports = {
     '<rootDir>/libs/shared/redis-connection',
     '<rootDir>/apps/data-api',
     '<rootDir>/libs/repository/core-controllers',
+    '<rootDir>/apps/js-chat',
   ],
 };

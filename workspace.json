@@ -9,16 +9,12 @@
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": [
-              "libs/shared/common/**/*.ts"
-            ]
+            "lintFilePatterns": ["libs/shared/common/**/*.ts"]
           }
         },
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/libs/shared/common"
-          ],
+          "outputs": ["coverage/libs/shared/common"],
           "options": {
             "jestConfig": "libs/shared/common/jest.config.js",
             "passWithNoTests": true
@@ -26,17 +22,13 @@
         },
         "build": {
           "executor": "@nrwl/node:package",
-          "outputs": [
-            "{options.outputPath}"
-          ],
+          "outputs": ["{options.outputPath}"],
           "options": {
             "outputPath": "dist/libs/shared/common",
             "tsConfig": "libs/shared/common/tsconfig.lib.json",
             "packageJson": "libs/shared/common/package.json",
             "main": "libs/shared/common/src/index.ts",
-            "assets": [
-              "libs/shared/common/*.md"
-            ]
+            "assets": ["libs/shared/common/*.md"]
           }
         }
       }
@@ -49,16 +41,12 @@
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": [
-              "libs/shared/repository/**/*.ts"
-            ]
+            "lintFilePatterns": ["libs/shared/repository/**/*.ts"]
           }
         },
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/libs/shared/repository"
-          ],
+          "outputs": ["coverage/libs/shared/repository"],
           "options": {
             "jestConfig": "libs/shared/repository/jest.config.js",
             "passWithNoTests": true
@@ -66,17 +54,13 @@
         },
         "build": {
           "executor": "@nrwl/node:package",
-          "outputs": [
-            "{options.outputPath}"
-          ],
+          "outputs": ["{options.outputPath}"],
           "options": {
             "outputPath": "dist/libs/shared/repository",
             "tsConfig": "libs/shared/repository/tsconfig.lib.json",
             "packageJson": "libs/shared/repository/package.json",
             "main": "libs/shared/repository/src/index.ts",
-            "assets": [
-              "libs/shared/repository/*.md"
-            ]
+            "assets": ["libs/shared/repository/*.md"]
           }
         }
       }
@@ -89,16 +73,12 @@
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": [
-              "libs/repository/redis/**/*.ts"
-            ]
+            "lintFilePatterns": ["libs/repository/redis/**/*.ts"]
           }
         },
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/libs/repository/redis"
-          ],
+          "outputs": ["coverage/libs/repository/redis"],
           "options": {
             "jestConfig": "libs/repository/redis/jest.config.js",
             "passWithNoTests": true
@@ -106,17 +86,13 @@
         },
         "build": {
           "executor": "@nrwl/node:package",
-          "outputs": [
-            "{options.outputPath}"
-          ],
+          "outputs": ["{options.outputPath}"],
           "options": {
             "outputPath": "dist/libs/repository/redis",
             "tsConfig": "libs/repository/redis/tsconfig.lib.json",
             "packageJson": "libs/repository/redis/package.json",
             "main": "libs/repository/redis/src/index.ts",
-            "assets": [
-              "libs/repository/redis/*.md"
-            ]
+            "assets": ["libs/repository/redis/*.md"]
           }
         }
       }
@@ -129,16 +105,12 @@
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": [
-              "libs/shared/redis-connection/**/*.ts"
-            ]
+            "lintFilePatterns": ["libs/shared/redis-connection/**/*.ts"]
           }
         },
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/libs/shared/redis-connection"
-          ],
+          "outputs": ["coverage/libs/shared/redis-connection"],
           "options": {
             "jestConfig": "libs/shared/redis-connection/jest.config.js",
             "passWithNoTests": true
@@ -146,17 +118,13 @@
         },
         "build": {
           "executor": "@nrwl/node:package",
-          "outputs": [
-            "{options.outputPath}"
-          ],
+          "outputs": ["{options.outputPath}"],
           "options": {
             "outputPath": "dist/libs/shared/redis-connection",
             "tsConfig": "libs/shared/redis-connection/tsconfig.lib.json",
             "packageJson": "libs/shared/redis-connection/package.json",
             "main": "libs/shared/redis-connection/src/index.ts",
-            "assets": [
-              "libs/shared/redis-connection/*.md"
-            ]
+            "assets": ["libs/shared/redis-connection/*.md"]
           }
         }
       }
@@ -169,16 +137,12 @@
       "targets": {
         "build": {
           "executor": "@nrwl/node:build",
-          "outputs": [
-            "{options.outputPath}"
-          ],
+          "outputs": ["{options.outputPath}"],
           "options": {
             "outputPath": "dist/apps/data-api",
             "main": "apps/data-api/src/main.ts",
             "tsConfig": "apps/data-api/tsconfig.app.json",
-            "assets": [
-              "apps/data-api/src/assets"
-            ]
+            "assets": ["apps/data-api/src/assets"]
           },
           "configurations": {
             "production": {
@@ -203,16 +167,12 @@
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": [
-              "apps/data-api/**/*.ts"
-            ]
+            "lintFilePatterns": ["apps/data-api/**/*.ts"]
           }
         },
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/apps/data-api"
-          ],
+          "outputs": ["coverage/apps/data-api"],
           "options": {
             "jestConfig": "apps/data-api/jest.config.js",
             "passWithNoTests": true
@@ -228,16 +188,12 @@
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": [
-              "libs/repository/core-controllers/**/*.ts"
-            ]
+            "lintFilePatterns": ["libs/repository/core-controllers/**/*.ts"]
           }
         },
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/libs/repository/core-controllers"
-          ],
+          "outputs": ["coverage/libs/repository/core-controllers"],
           "options": {
             "jestConfig": "libs/repository/core-controllers/jest.config.js",
             "passWithNoTests": true
@@ -245,17 +201,141 @@
         },
         "build": {
           "executor": "@nrwl/node:package",
-          "outputs": [
-            "{options.outputPath}"
-          ],
+          "outputs": ["{options.outputPath}"],
           "options": {
             "outputPath": "dist/libs/repository/core-controllers",
             "tsConfig": "libs/repository/core-controllers/tsconfig.lib.json",
             "packageJson": "libs/repository/core-controllers/package.json",
             "main": "libs/repository/core-controllers/src/index.ts",
+            "assets": ["libs/repository/core-controllers/*.md"]
+          }
+        }
+      }
+    },
+    "js-chat": {
+      "projectType": "application",
+      "root": "apps/js-chat",
+      "sourceRoot": "apps/js-chat/src",
+      "prefix": "js-chat",
+      "targets": {
+        "build": {
+          "executor": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/js-chat",
+            "index": "apps/js-chat/src/index.html",
+            "main": "apps/js-chat/src/main.ts",
+            "polyfills": "apps/js-chat/src/polyfills.ts",
+            "tsConfig": "apps/js-chat/tsconfig.app.json",
+            "aot": true,
             "assets": [
-              "libs/repository/core-controllers/*.md"
+              "apps/js-chat/src/favicon.ico",
+              {
+                "glob": "**/*",
+                "input": "apps/js-chat/src/assets",
+                "output": "assets"
+              },
+              {
+                "glob": "**/*.svg",
+                "input": "node_modules/ionicons/dist/ionicons/svg",
+                "output": "./svg"
+              }
+            ],
+            "styles": [
+              "apps/js-chat/src/styles.scss",
+              "apps/js-chat/src/theme/variables.scss",
+              "apps/js-chat/src/global.scss",
+              "apps/js-chat/src/custom-theme.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/js-chat/src/environments/environment.ts",
+                  "with": "apps/js-chat/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "executor": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "js-chat:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "js-chat:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "executor": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "js-chat:build"
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "apps/js-chat/src/**/*.ts",
+              "apps/js-chat/src/**/*.html"
             ]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/js-chat"],
+          "options": {
+            "jestConfig": "apps/js-chat/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "js-chat-e2e": {
+      "root": "apps/js-chat-e2e",
+      "sourceRoot": "apps/js-chat-e2e/src",
+      "projectType": "application",
+      "targets": {
+        "e2e": {
+          "executor": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/js-chat-e2e/cypress.json",
+            "tsConfig": "apps/js-chat-e2e/tsconfig.e2e.json",
+            "devServerTarget": "js-chat:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "js-chat:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["apps/js-chat-e2e/**/*.{js,ts}"]
           }
         }
       }
@@ -264,5 +344,17 @@
   "cli": {
     "defaultCollection": "@nrwl/nest"
   },
-  "defaultProject": "data-api"
+  "defaultProject": "data-api",
+  "generators": {
+    "@nrwl/angular:application": {
+      "unitTestRunner": "jest",
+      "e2eTestRunner": "cypress"
+    },
+    "@nrwl/angular:library": {
+      "unitTestRunner": "jest"
+    },
+    "@nrwl/angular:component": {
+      "style": "scss"
+    }
+  }
 }

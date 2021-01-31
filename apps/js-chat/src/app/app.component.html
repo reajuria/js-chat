@@ -1,0 +1,65 @@
+<ion-app>
+  <ion-grid [class]="{ 'ion-padding': true }" [fixed]="true">
+    <ion-row [class]="{ 'ion-padding': true }">
+      <ion-col [class]="{ 'ion-padding': true }">
+        <ion-card [style]="{ height: '80vh' }">
+          <ion-card-content style="height: 100%">
+            <ion-split-pane contentId="main">
+              <ion-menu contentId="main">
+                <ion-header>
+                  <ion-toolbar color="primary">
+                    <ion-title> JsChat <small>1.0</small> </ion-title>
+                  </ion-toolbar>
+                </ion-header>
+                <ion-item lines="none">
+                  <ion-avatar slot="start">
+                    <img
+                      src="https://randomuser.me/api/portraits/thumb/men/75.jpg"
+                    />
+                  </ion-avatar>
+                  <ion-label>Me</ion-label>
+                </ion-item>
+                <ion-content>
+                  <ion-list lines="none">
+                    <ng-container
+                      *ngFor="
+                        let conversation of sortConversations(
+                          conversationService.conversations$ | async
+                        );
+                        trackBy: trackConversations
+                      "
+                    >
+                      <ion-item button>
+                        <ion-label class="ion-text-no-wrap">
+                          <ion-text>
+                            <h3>
+                              Conversation {{ conversation.id.substr(0, 4) }}
+                            </h3>
+                          </ion-text>
+                          <ion-text>
+                            <p>
+                              <small>
+                                {{
+                                  (lastMessage(conversation) | async) ||
+                                    'No messages'
+                                }}
+                              </small>
+                            </p>
+                          </ion-text>
+                        </ion-label>
+                      </ion-item>
+                    </ng-container>
+                  </ion-list>
+                </ion-content>
+              </ion-menu>
+              <ion-router-outlet
+                id="main"
+                [animated]="true"
+              ></ion-router-outlet>
+            </ion-split-pane>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-app>
