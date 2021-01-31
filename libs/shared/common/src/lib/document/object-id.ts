@@ -1,7 +1,7 @@
 import { isEmpty, isNil } from 'lodash';
 import { randomHex } from '../util';
 
-export type ObjectId = string & { dummy: never };
+export type ObjectId = string;
 
 export const OBJECTID_ERROR_LENGTH =
   "the ObjectId provided doesn't match the required length";
