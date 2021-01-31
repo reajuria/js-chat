@@ -18,10 +18,14 @@ export class ConversationClientService
     super(conversationRepository);
   }
   newMessage$: Observable<Message>;
-  createMessage(user: User, contents: string): Promise<Message> {
+  createMessage(
+    conversation: Conversation,
+    user: User,
+    contents: string,
+  ): Promise<Message> {
     throw new Error('Method not implemented.');
   }
-  getMessages(): Promise<Message[]> {
+  getMessages(conversation: Conversation): Promise<Message[]> {
     throw new Error('Method not implemented.');
   }
 }

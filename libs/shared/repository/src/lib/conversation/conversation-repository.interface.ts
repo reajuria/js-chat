@@ -6,6 +6,10 @@ export const CONVERSATION_REPOSITORY = 'CONVERSATION_REPOSITORY';
 export interface ConversationRepository
   extends DocumentRepository<Conversation> {
   newMessage$: Observable<Message>;
-  createMessage(user: User, contents: string): Promise<Message>;
-  getMessages(): Promise<Message[]>;
+  createMessage(
+    conversation: Conversation,
+    user: User,
+    contents: string,
+  ): Promise<Message>;
+  getMessages(conversation: Conversation): Promise<Message[]>;
 }

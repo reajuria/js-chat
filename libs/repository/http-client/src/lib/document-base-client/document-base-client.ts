@@ -2,10 +2,25 @@ import { Document, DocumentDefinition, PartialDocument } from '@js-chat/common';
 import { DocumentRepository } from '@js-chat/repository';
 import { AxiosInstance } from 'axios';
 import { Observable } from 'rxjs';
+import * as io from 'socket.io-client';
 
 export class DocumentBaseClient<T extends Document, D = DocumentDefinition<T>>
   implements DocumentRepository<T> {
-  documentChange$?: Observable<DocumentDefinition<T>>;
+  documentChange$?: Observable<DocumentDefinition<T>> = new Observable(
+    (subscriber) => {
+      const subscription = io(`${this.axios.defaults.baseURL}`, {
+        path: `/${this.repositoryPath}`,
+        reconnectionAttempts: 5,
+      }).on('message', (change) => {
+        subscriber.next(change);
+      });
+
+      () => {
+        subscription.off('message');
+      };
+    },
+  );
+
   constructor(
     protected readonly axios: AxiosInstance,
     private readonly repositoryPath: string,
@@ -31,7 +46,7 @@ export class DocumentBaseClient<T extends Document, D = DocumentDefinition<T>>
       })
     ).data;
 
-    return documents?.map(this.createInstance);
+    return documents?.map((document) => this.createInstance(document));
   }
   async findOne(query: PartialDocument<T>): Promise<T> {
     const document = (

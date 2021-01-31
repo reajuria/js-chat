@@ -7,7 +7,7 @@ export class ConversationEntity extends BaseEntity implements ConversationData {
   id?: string;
 
   @Column()
-  key: string;
+  key?: string;
 
   @Column()
   participants: string[];

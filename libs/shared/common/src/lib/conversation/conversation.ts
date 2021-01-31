@@ -9,7 +9,7 @@ export class Conversation extends Document {
   private newMessageSubject = new Subject<Message>();
   newMessage$ = this.newMessageSubject.pipe(shareReplay(1));
 
-  readonly key: string;
+  readonly key?: string;
   readonly participants: ObjectId[];
   readonly room?: ObjectId;
   updated?: number;
