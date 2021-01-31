@@ -27,6 +27,11 @@
     "repository-http-client": { "tags": [] },
     "repository-ng-api-client": { "tags": [] },
     "conversation-gateway": { "tags": [] },
-    "repository-core-api-client": { "tags": [] }
+    "repository-core-api-client": { "tags": [] },
+    "command-queue": { "tags": [] },
+    "command-consumer": { "tags": [] },
+    "conversation-queue": { "tags": [] },
+    "conversation-consumer": { "tags": [] },
+    "stock-common": { "tags": [] }
   }
 }

@@ -31,7 +31,14 @@
       ],
       "@js-chat/core-api-client": [
         "libs/repository/core-api-client/src/index.ts"
-      ]
+      ],
+      "@js-chat/command-queue": ["libs/command/queue/src/index.ts"],
+      "@js-chat/command-consumer": ["libs/command/consumer/src/index.ts"],
+      "@js-chat/conversation-queue": ["libs/conversation/queue/src/index.ts"],
+      "@js-chat/conversation-consumer": [
+        "libs/conversation/consumer/src/index.ts"
+      ],
+      "@js-chat/stock-common": ["libs/stock/common/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

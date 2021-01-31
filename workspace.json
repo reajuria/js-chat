@@ -550,6 +550,206 @@
           }
         }
       }
+    },
+    "command-queue": {
+      "root": "libs/command/queue",
+      "sourceRoot": "libs/command/queue/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/command/queue/**/*.ts"
+            ]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": [
+            "coverage/libs/command/queue"
+          ],
+          "options": {
+            "jestConfig": "libs/command/queue/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "build": {
+          "executor": "@nrwl/node:package",
+          "outputs": [
+            "{options.outputPath}"
+          ],
+          "options": {
+            "outputPath": "dist/libs/command/queue",
+            "tsConfig": "libs/command/queue/tsconfig.lib.json",
+            "packageJson": "libs/command/queue/package.json",
+            "main": "libs/command/queue/src/index.ts",
+            "assets": [
+              "libs/command/queue/*.md"
+            ]
+          }
+        }
+      }
+    },
+    "command-consumer": {
+      "root": "libs/command/consumer",
+      "sourceRoot": "libs/command/consumer/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/command/consumer/**/*.ts"
+            ]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": [
+            "coverage/libs/command/consumer"
+          ],
+          "options": {
+            "jestConfig": "libs/command/consumer/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "build": {
+          "executor": "@nrwl/node:package",
+          "outputs": [
+            "{options.outputPath}"
+          ],
+          "options": {
+            "outputPath": "dist/libs/command/consumer",
+            "tsConfig": "libs/command/consumer/tsconfig.lib.json",
+            "packageJson": "libs/command/consumer/package.json",
+            "main": "libs/command/consumer/src/index.ts",
+            "assets": [
+              "libs/command/consumer/*.md"
+            ]
+          }
+        }
+      }
+    },
+    "conversation-queue": {
+      "root": "libs/conversation/queue",
+      "sourceRoot": "libs/conversation/queue/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/conversation/queue/**/*.ts"
+            ]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": [
+            "coverage/libs/conversation/queue"
+          ],
+          "options": {
+            "jestConfig": "libs/conversation/queue/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "build": {
+          "executor": "@nrwl/node:package",
+          "outputs": [
+            "{options.outputPath}"
+          ],
+          "options": {
+            "outputPath": "dist/libs/conversation/queue",
+            "tsConfig": "libs/conversation/queue/tsconfig.lib.json",
+            "packageJson": "libs/conversation/queue/package.json",
+            "main": "libs/conversation/queue/src/index.ts",
+            "assets": [
+              "libs/conversation/queue/*.md"
+            ]
+          }
+        }
+      }
+    },
+    "conversation-consumer": {
+      "root": "libs/conversation/consumer",
+      "sourceRoot": "libs/conversation/consumer/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/conversation/consumer/**/*.ts"
+            ]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": [
+            "coverage/libs/conversation/consumer"
+          ],
+          "options": {
+            "jestConfig": "libs/conversation/consumer/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "build": {
+          "executor": "@nrwl/node:package",
+          "outputs": [
+            "{options.outputPath}"
+          ],
+          "options": {
+            "outputPath": "dist/libs/conversation/consumer",
+            "tsConfig": "libs/conversation/consumer/tsconfig.lib.json",
+            "packageJson": "libs/conversation/consumer/package.json",
+            "main": "libs/conversation/consumer/src/index.ts",
+            "assets": [
+              "libs/conversation/consumer/*.md"
+            ]
+          }
+        }
+      }
+    },
+    "stock-common": {
+      "root": "libs/stock/common",
+      "sourceRoot": "libs/stock/common/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/stock/common/**/*.ts"
+            ]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": [
+            "coverage/libs/stock/common"
+          ],
+          "options": {
+            "jestConfig": "libs/stock/common/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "build": {
+          "executor": "@nrwl/node:package",
+          "outputs": [
+            "{options.outputPath}"
+          ],
+          "options": {
+            "outputPath": "dist/libs/stock/common",
+            "tsConfig": "libs/stock/common/tsconfig.lib.json",
+            "packageJson": "libs/stock/common/package.json",
+            "main": "libs/stock/common/src/index.ts",
+            "assets": [
+              "libs/stock/common/*.md"
+            ]
+          }
+        }
+      }
     }
   },
   "cli": {

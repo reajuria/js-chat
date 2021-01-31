@@ -2,7 +2,7 @@ import { parse } from 'url';
 
 const DEFAULT_URI = 'redis://localhost:6379';
 
-export const redisEnvironment = {
+let envWrapper = {
   uri: process.env.REDIS_URI || DEFAULT_URI,
   host: '',
   port: 0,
@@ -10,13 +10,24 @@ export const redisEnvironment = {
 };
 
 try {
-  const uri = parse(redisEnvironment.uri, true);
-  redisEnvironment.host = uri.hostname;
-  redisEnvironment.port = Number(uri.port || '6379');
-  redisEnvironment.properties = {
+  const uri = parse(envWrapper.uri, true);
+  envWrapper.host = uri.hostname;
+  envWrapper.port = Number(uri.port || '6379');
+  envWrapper.properties = {
     ...(uri?.query || {}),
   };
-  console.log(redisEnvironment);
+  envWrapper = {
+    ...envWrapper,
+    ...envWrapper.properties,
+  };
 } catch (error) {
-  console.error('Redis Environment error', error);
+  console.error('Redis environment error', error);
 }
+
+export const redisEnvironment: {
+  uri: string;
+  host: string;
+  port: number;
+  properties: Record<string, any>;
+  [extra: string]: any;
+} = envWrapper;
