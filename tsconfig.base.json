@@ -18,7 +18,12 @@
       "@js-chat/common": ["libs/shared/common/src/index.ts"],
       "@js-chat/repository": ["libs/shared/repository/src/index.ts"],
       "@js-chat/repository-redis": ["libs/repository/redis/src/index.ts"],
-      "@js-chat/redis-connection": ["libs/shared/redis-connection/src/index.ts"]
+      "@js-chat/redis-connection": [
+        "libs/shared/redis-connection/src/index.ts"
+      ],
+      "@js-chat/core-controllers": [
+        "libs/repository/core-controllers/src/index.ts"
+      ]
     }
   },
   "exclude": ["node_modules", "tmp"]

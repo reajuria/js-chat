@@ -64,7 +64,7 @@ export class DocumentBaseRepository<
     return document;
   }
   async find(query: PartialDocument<T>): Promise<T[]> {
-    const entries = Object.entries(query);
+    const entries = Object.entries(query || {});
     let queryEx = this.entity.query();
     for (const [key, value] of entries) {
       queryEx = queryEx.where(key as any, '=', value as any);
@@ -73,7 +73,7 @@ export class DocumentBaseRepository<
     return results.map((item) => this.createInstance(item as any));
   }
   async findOne(query: PartialDocument<T>): Promise<T> {
-    const entries = Object.entries(query);
+    const entries = Object.entries(query || {});
     let queryEx = this.entity.query();
     for (const [key, value] of entries) {
       queryEx = queryEx.where(key as any, '=', value as any);
