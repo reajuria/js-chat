@@ -9,5 +9,6 @@ module.exports = {
     '<rootDir>/apps/js-chat',
     '<rootDir>/libs/repository/http-client',
     '<rootDir>/libs/repository/ng-api-client',
+    '<rootDir>/libs/conversation/gateway',
   ],
 };

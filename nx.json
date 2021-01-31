@@ -25,6 +25,7 @@
     "js-chat": { "tags": [] },
     "js-chat-e2e": { "tags": [], "implicitDependencies": ["js-chat"] },
     "repository-http-client": { "tags": [] },
-    "repository-ng-api-client": { "tags": [] }
+    "repository-ng-api-client": { "tags": [] },
+    "conversation-gateway": { "tags": [] }
   }
 }
