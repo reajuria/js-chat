@@ -23,7 +23,8 @@
       ],
       "@js-chat/core-controllers": [
         "libs/repository/core-controllers/src/index.ts"
-      ]
+      ],
+      "@js-chat/http-client": ["libs/repository/http-client/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

@@ -23,6 +23,7 @@
     "data-api": { "tags": [] },
     "repository-core-controllers": { "tags": [] },
     "js-chat": { "tags": [] },
-    "js-chat-e2e": { "tags": [], "implicitDependencies": ["js-chat"] }
+    "js-chat-e2e": { "tags": [], "implicitDependencies": ["js-chat"] },
+    "repository-http-client": { "tags": [] }
   }
 }
