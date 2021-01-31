@@ -431,6 +431,45 @@
           }
         }
       }
+    },
+    "repository-ng-api-client": {
+      "projectType": "library",
+      "root": "libs/repository/ng-api-client",
+      "sourceRoot": "libs/repository/ng-api-client/src",
+      "prefix": "js-chat",
+      "targets": {
+        "build": {
+          "executor": "@nrwl/angular:ng-packagr-lite",
+          "options": {
+            "tsConfig": "libs/repository/ng-api-client/tsconfig.lib.json",
+            "project": "libs/repository/ng-api-client/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/repository/ng-api-client/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/repository/ng-api-client/src/**/*.ts",
+              "libs/repository/ng-api-client/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": [
+            "coverage/libs/repository/ng-api-client"
+          ],
+          "options": {
+            "jestConfig": "libs/repository/ng-api-client/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
     }
   },
   "cli": {

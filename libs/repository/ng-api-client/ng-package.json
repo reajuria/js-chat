@@ -1,0 +1,7 @@
+{
+  "$schema": "../../../node_modules/ng-packagr/ng-package.schema.json",
+  "dest": "../../../dist/libs/repository/ng-api-client",
+  "lib": {
+    "entryFile": "src/index.ts"
+  }
+}

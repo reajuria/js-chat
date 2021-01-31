@@ -8,5 +8,6 @@ module.exports = {
     '<rootDir>/libs/repository/core-controllers',
     '<rootDir>/apps/js-chat',
     '<rootDir>/libs/repository/http-client',
+    '<rootDir>/libs/repository/ng-api-client',
   ],
 };
