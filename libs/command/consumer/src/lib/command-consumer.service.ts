@@ -65,7 +65,11 @@ export class CommandConsumerService {
       try {
         stockId = data?.contents.replace('/stock=', '').toLowerCase();
         const stockData = await this.requestStockInfo(stockId);
-        messageContents = `${stockData.symbol} quite is $${stockData.close} per share`;
+        if (isNaN(Number(stockData?.close)) === false) {
+          messageContents = `${stockData.symbol} quote is $${stockData.close} per share`;
+        } else {
+          messageContents = `${stockData.symbol} is not available`;
+        }
       } catch (error) {
         messageContents += ` ${stockId}`;
       }
