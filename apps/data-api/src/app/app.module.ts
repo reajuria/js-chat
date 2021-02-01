@@ -1,3 +1,12 @@
+import {
+  CommandQueueModule,
+  COMMAND_QUEUE_ROOT_MODULE,
+} from '@js-chat/command-queue';
+import { ConversationGatewayModule } from '@js-chat/conversation-gateway';
+import {
+  ConversationQueueModule,
+  CONVERSATION_QUEUE_ROOT_MODULE,
+} from '@js-chat/conversation-queue';
 import { RepositoryCoreControllersModule } from '@js-chat/core-controllers';
 import {
   RedisConnectionModule,
@@ -14,6 +23,7 @@ import {
   CommandService,
   ConversationService,
   MessageService,
+  RedisRepositoryModule,
   RoomService,
   UserService,
 } from '@js-chat/repository-redis';
@@ -21,7 +31,12 @@ import { Module } from '@nestjs/common';
 
 @Module({
   imports: [
+    COMMAND_QUEUE_ROOT_MODULE,
+    CONVERSATION_QUEUE_ROOT_MODULE,
+    CommandQueueModule,
+    ConversationQueueModule,
     RedisConnectionModule,
+    RedisRepositoryModule,
     RepositoryCoreControllersModule.register([
       {
         provide: COMMAND_REPOSITORY,
@@ -45,6 +60,7 @@ import { Module } from '@nestjs/common';
       },
       RedisConnectionService,
     ]),
+    ConversationGatewayModule,
   ],
   controllers: [],
   providers: [],
