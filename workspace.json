@@ -750,6 +750,65 @@
           }
         }
       }
+    },
+    "stock-bot-worker": {
+      "root": "apps/stock-bot-worker",
+      "sourceRoot": "apps/stock-bot-worker/src",
+      "projectType": "application",
+      "prefix": "stock-bot-worker",
+      "targets": {
+        "build": {
+          "executor": "@nrwl/node:build",
+          "outputs": [
+            "{options.outputPath}"
+          ],
+          "options": {
+            "outputPath": "dist/apps/stock-bot-worker",
+            "main": "apps/stock-bot-worker/src/main.ts",
+            "tsConfig": "apps/stock-bot-worker/tsconfig.app.json",
+            "assets": [
+              "apps/stock-bot-worker/src/assets"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "optimization": true,
+              "extractLicenses": true,
+              "inspect": false,
+              "fileReplacements": [
+                {
+                  "replace": "apps/stock-bot-worker/src/environments/environment.ts",
+                  "with": "apps/stock-bot-worker/src/environments/environment.prod.ts"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "executor": "@nrwl/node:execute",
+          "options": {
+            "buildTarget": "stock-bot-worker:build"
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "apps/stock-bot-worker/**/*.ts"
+            ]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": [
+            "coverage/apps/stock-bot-worker"
+          ],
+          "options": {
+            "jestConfig": "apps/stock-bot-worker/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
     }
   },
   "cli": {

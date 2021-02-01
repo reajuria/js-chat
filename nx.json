@@ -32,6 +32,7 @@
     "command-consumer": { "tags": [] },
     "conversation-queue": { "tags": [] },
     "conversation-consumer": { "tags": [] },
-    "stock-common": { "tags": [] }
+    "stock-common": { "tags": [] },
+    "stock-bot-worker": { "tags": [] }
   }
 }

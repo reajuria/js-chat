@@ -16,5 +16,6 @@ module.exports = {
     '<rootDir>/libs/conversation/queue',
     '<rootDir>/libs/conversation/consumer',
     '<rootDir>/libs/stock/common',
+    '<rootDir>/apps/stock-bot-worker',
   ],
 };
