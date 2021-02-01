@@ -5,8 +5,10 @@ import { RoomClientService } from './room-client.service';
 export class RoomClientModule {
   static register(providers: Provider[]): DynamicModule {
     return {
+      global: true,
       module: RoomClientModule,
       providers: [...providers, RoomClientService],
+      exports: [RoomClientService],
     };
   }
 }

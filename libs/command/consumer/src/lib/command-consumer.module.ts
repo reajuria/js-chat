@@ -8,6 +8,7 @@ import { CommandConsumerService } from './command-consumer.service';
 export class CommandConsumerModule {
   static register(providers: Provider[]): DynamicModule {
     return {
+      global: true,
       module: CommandConsumerModule,
       imports: [
         CommandQueueModule,
@@ -15,6 +16,7 @@ export class CommandConsumerModule {
         ConversationQueueModule,
       ],
       providers: [...providers, CommandConsumerService],
+      exports: [CommandConsumerService],
     };
   }
 }

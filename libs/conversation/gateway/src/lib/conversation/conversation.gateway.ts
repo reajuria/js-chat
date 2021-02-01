@@ -1,10 +1,12 @@
+import { Message } from '@js-chat/common';
+import { RedisConnectionService } from '@js-chat/redis-connection';
 import {
   OnGatewayConnection,
   SubscribeMessage,
   WebSocketGateway,
   WebSocketServer,
 } from '@nestjs/websockets';
-import { Server, Socket } from 'socket.io';
+import { Namespace, Socket } from 'socket.io';
 
 @WebSocketGateway({
   path: '/conversations',
@@ -12,10 +14,26 @@ import { Server, Socket } from 'socket.io';
   serveClient: false,
 })
 export class ConversationGateway implements OnGatewayConnection {
-  @WebSocketServer() server: Server;
+  redis = this.redisService.createConnection('conversation-sub');
+  @WebSocketServer() ns: Namespace;
+  constructor(private redisService: RedisConnectionService) {
+    this.redis.psubscribe('conversation-message:*').then(() => {
+      this.redis.on('pmessage', (pattern, channel, messageContents) => {
+        const message = new Message(JSON.parse(messageContents));
+        this.ns.server
+          .of(`/api/${message.conversation}`)
+          .to('messages')
+          .send(message);
+      });
+    });
+  }
 
   handleConnection(client: Socket, ...args: any[]) {
-    console.log(client.nsp.name);
+    const namespace = client.nsp.name.replace('/api', '');
+    console.log(namespace);
+    client.join('messages');
+    // client.
+    // client.join();
   }
 
   @SubscribeMessage('message')

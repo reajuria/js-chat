@@ -1,6 +1,7 @@
 import { Document, DocumentDefinition, PartialDocument } from '@js-chat/common';
 import { DocumentRepository } from '@js-chat/repository';
 import { AxiosInstance } from 'axios';
+import { isEmpty, isNil } from 'lodash';
 import { Observable } from 'rxjs';
 import * as io from 'socket.io-client';
 
@@ -30,6 +31,9 @@ export class DocumentBaseClient<T extends Document, D = DocumentDefinition<T>>
   ) {}
 
   private createInstance(input: D) {
+    if (isNil(input) || isEmpty(input)) {
+      return undefined;
+    }
     return new this.documentFactory(input);
   }
 

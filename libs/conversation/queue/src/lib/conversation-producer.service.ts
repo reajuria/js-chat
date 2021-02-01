@@ -16,4 +16,10 @@ export class ConversationProducerService {
       message,
     });
   }
+
+  async emitMessage(message: MessageData) {
+    await this.conversationQueue.add('push-message', {
+      message,
+    });
+  }
 }

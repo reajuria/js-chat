@@ -1,16 +1,14 @@
 import { Injectable } from '@angular/core';
-import { Conversation } from '@js-chat/common';
+import { Conversation, Message, ObjectId } from '@js-chat/common';
 import {
-  CommandClientService,
   ConversationClientService,
-  MessageClientService,
-  RoomClientService,
   UserClientService,
 } from '@js-chat/ng-api-client';
-import { from, Subject } from 'rxjs';
-import { shareReplay, switchMap } from 'rxjs/operators';
+import { concat, from, Observable, of, Subject } from 'rxjs';
+import { shareReplay, switchMap, takeLast } from 'rxjs/operators';
+import * as io from 'socket.io-client';
+import { environment } from '../../environments/environment';
 import { AuthService } from './auth.service';
-import { ConfigurationService } from './configuration.service';
 
 @Injectable({
   providedIn: 'root',
@@ -21,17 +19,20 @@ export class ConversationService {
   selected$ = this.selectedSubject.pipe(shareReplay(1));
   selectedMessages$ = this.selected$.pipe(
     switchMap((conversation) =>
-      from(this.conversationService.getMessages(conversation.id)),
+      concat(
+        from(this.conversationService.getMessages(conversation.id)).pipe(
+          switchMap((messages) => of(...messages)),
+        ),
+        this.getConversationMessages(conversation.id),
+      ),
     ),
+    takeLast(5),
+    shareReplay(1),
   );
   conversations$ = from(this.conversationService.find({})).pipe(shareReplay(1));
 
   constructor(
-    private configurationService: ConfigurationService,
     private conversationService: ConversationClientService,
-    private commandService: CommandClientService,
-    private roomService: RoomClientService,
-    private messageService: MessageClientService,
     private userService: UserClientService,
     private authService: AuthService,
   ) {}
@@ -55,7 +56,6 @@ export class ConversationService {
   }
 
   async createMessage(contents: string) {
-    console.log(this.selected, this.authService.user);
     this.conversationService.createMessage(
       this.selected.id,
       this.authService.user.id,
@@ -70,5 +70,21 @@ export class ConversationService {
 
   async getMessages() {
     return await this.conversationService.getMessages(this.selected?.id);
+  }
+
+  getConversationMessages(conversation: ObjectId) {
+    return new Observable<Message>((subscriber) => {
+      const subscription = io(`${environment.dataApiUrl}/${conversation}`, {
+        path: `/conversations`,
+        reconnectionAttempts: 5,
+      }).on('message', (message) => {
+        console.log(message);
+        subscriber.next(new Message(message));
+      });
+
+      () => {
+        subscription.off('message');
+      };
+    });
   }
 }

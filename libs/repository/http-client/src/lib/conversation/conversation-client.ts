@@ -11,6 +11,7 @@ export class ConversationHttpClient
     super(axios, '/conversations', Conversation);
   }
   newMessage$: Observable<Message>;
+
   async createMessage(
     conversation: ObjectId,
     user: ObjectId,
@@ -26,6 +27,7 @@ export class ConversationHttpClient
       ).data,
     );
   }
+
   async getMessages(conversation: ObjectId): Promise<Message[]> {
     const messages = (
       await this.axios.get<MessageData[]>('/conversations/messages', {
@@ -35,6 +37,7 @@ export class ConversationHttpClient
 
     return messages.map((message) => new Message(message));
   }
+
   async pushServiceMessage(
     conversation: Conversation,
     message: Message,

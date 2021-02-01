@@ -5,8 +5,10 @@ import { ConversationClientService } from './conversation-client.service';
 export class ConversationClientModule {
   static register(providers: Provider[]): DynamicModule {
     return {
+      global: true,
       module: ConversationClientModule,
       providers: [...providers, ConversationClientService],
+      exports: [ConversationClientService],
     };
   }
 }

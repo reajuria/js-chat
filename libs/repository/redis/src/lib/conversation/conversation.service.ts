@@ -29,6 +29,7 @@ export class ConversationService
     const conversationOb = await this.findById(conversation);
     const message = conversationOb.createMessage(user, contents);
     await this.messageService.insert(message.toJSON());
+    await this.conversationProducer.emitMessage(message.toJSON());
     return message;
   }
   async getMessages(conversation: ObjectId): Promise<Message[]> {
@@ -47,9 +48,6 @@ export class ConversationService
     conversation: Conversation,
     message: Message,
   ): Promise<void> {
-    return this.conversationProducer.emitServiceMessage(
-      conversation.id,
-      message.toJSON(),
-    );
+    return this.conversationProducer.emitMessage(message.toJSON());
   }
 }

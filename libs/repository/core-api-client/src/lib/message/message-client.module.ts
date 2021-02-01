@@ -5,8 +5,10 @@ import { MessageClientService } from './message-client.service';
 export class MessageClientModule {
   static register(providers: Provider[]): DynamicModule {
     return {
+      global: true,
       module: MessageClientModule,
       providers: [...providers, MessageClientService],
+      exports: [MessageClientService],
     };
   }
 }

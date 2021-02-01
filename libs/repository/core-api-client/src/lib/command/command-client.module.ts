@@ -5,8 +5,10 @@ import { CommandClientService } from './command-client.service';
 export class CommandClientModule {
   static register(providers: Provider[]): DynamicModule {
     return {
+      global: true,
       module: CommandClientModule,
       providers: [...providers, CommandClientService],
+      exports: [CommandClientService],
     };
   }
 }

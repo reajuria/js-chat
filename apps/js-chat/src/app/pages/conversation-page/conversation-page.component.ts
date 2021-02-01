@@ -45,12 +45,20 @@ export class ConversationPageComponent implements OnInit {
     private commandService: CommandClientService,
   ) {
     commandService.find({}).then((commands) => {
-      this.commands = [...commands];
+      console.log(commands);
+      this.commands = [
+        ...commands.filter(
+          (command) =>
+            isNil(command.patternString) === false &&
+            isEmpty(command.patternString) === false,
+        ),
+      ];
     });
   }
 
   async createMessage(contents: string) {
     const command = this.commands.find((command) => {
+      console.log(command);
       return command.pattern.test(contents);
     });
     if (isNil(command) === false) {

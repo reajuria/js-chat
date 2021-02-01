@@ -5,8 +5,10 @@ import { UserClientService } from './user-client.service';
 export class UserClientModule {
   static register(providers: Provider[]): DynamicModule {
     return {
+      global: true,
       module: UserClientModule,
       providers: [...providers, UserClientService],
+      exports: [UserClientService],
     };
   }
 }

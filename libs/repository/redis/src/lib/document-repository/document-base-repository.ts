@@ -6,7 +6,7 @@ import {
 } from '@js-chat/common';
 import { RedisConnectionService } from '@js-chat/redis-connection';
 import { DocumentRepository } from '@js-chat/repository';
-import { first, isNil } from 'lodash';
+import { first, isEmpty, isNil } from 'lodash';
 import { fromEvent, Observable } from 'rxjs';
 import { filter, map } from 'rxjs/operators';
 import { BaseEntity } from 'ts-redis-orm';
@@ -44,6 +44,9 @@ export class DocumentBaseRepository<
   }
 
   private createInstance(input: DocumentDefinition<T>) {
+    if (isNil(input) || isEmpty(input)) {
+      return undefined;
+    }
     return new this.documentFactory(input);
   }
 
