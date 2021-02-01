@@ -1,15 +1,37 @@
 <ion-header>
   <ion-toolbar color="primary">
-    <ion-title>{{ 'title' }}</ion-title>
+    <ion-title>{{ conversationTitle$ | async }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content> </ion-content>
+<ion-content>
+  <ion-list lines="none">
+    <ng-container
+      *ngFor="let message of conversationService.selectedMessages$ | async"
+    >
+      <ion-item>
+        <ion-chip
+          [slot]="authService.user.id === message.user ? 'start' : 'end'"
+          outline
+        >
+          <ion-label>
+            {{
+              message.getContents((conversationService.selected$ | async).key)
+            }}
+          </ion-label>
+        </ion-chip>
+      </ion-item>
+    </ng-container>
+  </ion-list>
+</ion-content>
 
 <ion-footer>
   <ion-toolbar>
-    <ion-input
-      placeholder="Write a message or request a command with / (slash), press enter to send message"
-    ></ion-input>
+    <ion-input #input (keyup.enter)="createMessage(input.value)"></ion-input>
+    <ion-buttons slot="end">
+      <ion-button>
+        <ion-icon slot="icon-only" icon="send"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-footer>

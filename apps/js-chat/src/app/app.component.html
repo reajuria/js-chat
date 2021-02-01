@@ -29,7 +29,12 @@
                         trackBy: trackConversations
                       "
                     >
-                      <ion-item button>
+                      <ion-item
+                        button
+                        (click)="
+                          conversationService.pickConversation(conversation)
+                        "
+                      >
                         <ion-label class="ion-text-no-wrap">
                           <ion-text>
                             <h3>
