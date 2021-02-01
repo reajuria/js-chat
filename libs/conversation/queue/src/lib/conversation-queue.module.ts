@@ -1,9 +1,11 @@
-import { Module } from '@nestjs/common';
+import { Global, Module } from '@nestjs/common';
+import { CONVERSATION_QUEUE_REGISTER } from './constants';
 import { ConversationProducerService } from './conversation-producer.service';
 
+@Global()
 @Module({
-  controllers: [],
+  imports: [CONVERSATION_QUEUE_REGISTER],
   providers: [ConversationProducerService],
-  exports: [],
+  exports: [ConversationProducerService],
 })
 export class ConversationQueueModule {}

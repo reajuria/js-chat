@@ -1,4 +1,4 @@
-import { Conversation, Message, User } from '@js-chat/common';
+import { Conversation, Message, ObjectId } from '@js-chat/common';
 import {
   ConversationRepository,
   CONVERSATION_REPOSITORY,
@@ -13,19 +13,32 @@ export class ConversationClientService
   implements ConversationRepository {
   constructor(
     @Inject(CONVERSATION_REPOSITORY)
-    conversationRepository: ConversationRepository,
+    public conversationRepository: ConversationRepository,
   ) {
     super(conversationRepository);
   }
   newMessage$: Observable<Message>;
   createMessage(
-    conversation: Conversation,
-    user: User,
+    conversation: ObjectId,
+    user: ObjectId,
     contents: string,
   ): Promise<Message> {
-    throw new Error('Method not implemented.');
+    return this.conversationRepository.createMessage(
+      conversation,
+      user,
+      contents,
+    );
   }
-  getMessages(conversation: Conversation): Promise<Message[]> {
-    throw new Error('Method not implemented.');
+  getMessages(conversation: ObjectId): Promise<Message[]> {
+    return this.conversationRepository.getMessages(conversation);
+  }
+  pushServiceMessage(
+    conversation: Conversation,
+    message: Message,
+  ): Promise<void> {
+    return this.conversationRepository.pushServiceMessage(
+      conversation,
+      message,
+    );
   }
 }

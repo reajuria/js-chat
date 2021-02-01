@@ -3,5 +3,5 @@ export const StockServiceDescription = {
 };
 
 export function getStockServiceUrl(parameter: string) {
-  StockServiceDescription.url.replace('%STOCK%', parameter);
+  return StockServiceDescription.url.replace('%STOCK%', parameter);
 }

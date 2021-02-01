@@ -1,4 +1,13 @@
+import { ObjectId } from '@js-chat/common';
+import { InjectQueue } from '@nestjs/bull';
 import { Injectable } from '@nestjs/common';
-
+import { Queue } from 'bull';
+import { COMMAND_QUEUE_NAME } from './constants';
 @Injectable()
-export class CommandProducerService {}
+export class CommandProducerService {
+  constructor(@InjectQueue(COMMAND_QUEUE_NAME) private commandQueue: Queue) {}
+
+  async requestCommand(command: ObjectId, data: any) {
+    await this.commandQueue.add({ command, data });
+  }
+}

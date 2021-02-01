@@ -6,7 +6,8 @@ export class DocumentBaseClient<
   T extends Document,
   R extends DocumentRepository<T>
 > implements DocumentRepository<T> {
-  documentChange$?: Observable<DocumentDefinition<T>>;
+  documentChange$?: Observable<DocumentDefinition<T>> = this.repository
+    .documentChange$;
 
   constructor(private readonly repository: R) {}
 

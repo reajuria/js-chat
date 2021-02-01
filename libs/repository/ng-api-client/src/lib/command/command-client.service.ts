@@ -10,11 +10,11 @@ export class CommandClientService
   extends DocumentBaseClient<Command, CommandRepository>
   implements CommandRepository {
   constructor(
-    @Inject(COMMAND_REPOSITORY) commandRepository: CommandRepository,
+    @Inject(COMMAND_REPOSITORY) public commandRepository: CommandRepository,
   ) {
     super(commandRepository);
   }
   execute(command: string, input: Record<string, string>): Promise<void> {
-    throw new Error('Method not implemented.');
+    return this.commandRepository.execute(command, input);
   }
 }

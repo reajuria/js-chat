@@ -1,6 +1,6 @@
-import { Command } from '@js-chat/common';
+import { Command, ObjectId } from '@js-chat/common';
 import { CommandRepository, COMMAND_REPOSITORY } from '@js-chat/repository';
-import { Controller, Inject } from '@nestjs/common';
+import { Body, Controller, Inject, Post, Query } from '@nestjs/common';
 import { DocumentBaseController } from '../document-controller';
 
 @Controller('commands')
@@ -9,12 +9,16 @@ export class CommandController
   implements CommandRepository {
   constructor(
     @Inject(COMMAND_REPOSITORY)
-    commandRepository: CommandRepository,
+    public commandRepository: CommandRepository,
   ) {
     super(commandRepository);
   }
 
-  execute(command: string, input: Record<string, string>): Promise<void> {
-    throw new Error('Method not implemented.');
+  @Post('execute')
+  execute(
+    @Body('command') command: ObjectId,
+    @Query('input') input: Record<string, string>,
+  ): Promise<void> {
+    return this.commandRepository.execute(command, input);
   }
 }

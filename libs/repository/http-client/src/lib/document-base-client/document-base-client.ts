@@ -41,7 +41,6 @@ export class DocumentBaseClient<T extends Document, D = DocumentDefinition<T>>
   async find(query: PartialDocument<T>): Promise<T[]> {
     const documents = (
       await this.axios.get<D[]>(this.repositoryPath, {
-        ...this.axios.defaults,
         params: query,
       })
     ).data;
@@ -50,8 +49,7 @@ export class DocumentBaseClient<T extends Document, D = DocumentDefinition<T>>
   }
   async findOne(query: PartialDocument<T>): Promise<T> {
     const document = (
-      await this.axios.get<D>(this.repositoryPath, {
-        ...this.axios.defaults,
+      await this.axios.get<D>(`${this.repositoryPath}/one`, {
         params: query,
       })
     ).data;

@@ -21,7 +21,7 @@ export class DocumentBaseController<
     return await this.repository.find(query);
   }
 
-  @Get()
+  @Get('one')
   async findOne(@Query() query: PartialDocument<T>): Promise<T> {
     return await this.repository.findOne(query);
   }
