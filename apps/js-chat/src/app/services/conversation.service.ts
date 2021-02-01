@@ -4,8 +4,8 @@ import {
   ConversationClientService,
   UserClientService,
 } from '@js-chat/ng-api-client';
-import { concat, from, Observable, of, Subject } from 'rxjs';
-import { shareReplay, switchMap, takeLast } from 'rxjs/operators';
+import { from, Observable, Subject } from 'rxjs';
+import { shareReplay, switchMap } from 'rxjs/operators';
 import * as io from 'socket.io-client';
 import { environment } from '../../environments/environment';
 import { AuthService } from './auth.service';
@@ -18,15 +18,7 @@ export class ConversationService {
   private selectedSubject = new Subject<Conversation>();
   selected$ = this.selectedSubject.pipe(shareReplay(1));
   selectedMessages$ = this.selected$.pipe(
-    switchMap((conversation) =>
-      concat(
-        from(this.conversationService.getMessages(conversation.id)).pipe(
-          switchMap((messages) => of(...messages)),
-        ),
-        this.getConversationMessages(conversation.id),
-      ),
-    ),
-    takeLast(5),
+    switchMap((conversation) => this.getConversationMessages(conversation.id)),
     shareReplay(1),
   );
   conversations$ = from(this.conversationService.find({})).pipe(shareReplay(1));
@@ -73,13 +65,19 @@ export class ConversationService {
   }
 
   getConversationMessages(conversation: ObjectId) {
-    return new Observable<Message>((subscriber) => {
+    return new Observable<Message[]>((subscriber) => {
+      let messages: Message[] = [];
+      this.conversationService.getMessages(conversation).then((cMessages) => {
+        messages = [...cMessages];
+        subscriber.next(messages);
+      });
       const subscription = io(`${environment.dataApiUrl}/${conversation}`, {
         path: `/conversations`,
         reconnectionAttempts: 5,
       }).on('message', (message) => {
         console.log(message);
-        subscriber.next(new Message(message));
+        messages.push(new Message(message));
+        subscriber.next(messages);
       });
 
       () => {
