@@ -9,6 +9,11 @@
                 <ion-header>
                   <ion-toolbar color="primary">
                     <ion-title> JsChat <small>1.0</small> </ion-title>
+                    <ion-buttons slot="end">
+                      <ion-button (click)="addConversation()">
+                        <ion-icon icon="add" slot="icon-only"></ion-icon>
+                      </ion-button>
+                    </ion-buttons>
                   </ion-toolbar>
                 </ion-header>
                 <ion-item lines="none">

@@ -22,6 +22,10 @@ export class AppComponent {
     return reverse(sortBy(conversations, 'updated'));
   }
 
+  async addConversation() {
+    await this.conversationService.createConversation();
+  }
+
   lastMessage(conversation: Conversation) {
     return conversation.newMessage$.pipe(
       map((message) => message.getContents(conversation.key)),

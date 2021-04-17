@@ -47,6 +47,12 @@ export class ConversationService {
     await this.conversationService.insert(conversation.toJSON());
   }
 
+  async createConversation() {
+    await this.conversationService.insert({
+      participants: [this.authService.user.id, this.authService.user.id],
+    });
+  }
+
   async createMessage(contents: string) {
     this.conversationService.createMessage(
       this.selected.id,
