@@ -30,11 +30,13 @@ export class AuthService {
           id: 'name',
           placeholder: 'Alias',
           name: 'name',
+          value: 'Rafael',
         },
         {
           id: 'username',
           placeholder: 'Username',
           name: 'username',
+          value: 'reajuria',
         },
       ],
       buttons: ['accept'],
