@@ -220,46 +220,6 @@
         }
       }
     },
-    "repository-core-controllers": {
-      "root": "libs/repository/core-controllers",
-      "sourceRoot": "libs/repository/core-controllers/src",
-      "projectType": "library",
-      "targets": {
-        "lint": {
-          "executor": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": [
-              "libs/repository/core-controllers/**/*.ts"
-            ]
-          }
-        },
-        "test": {
-          "executor": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/libs/repository/core-controllers"
-          ],
-          "options": {
-            "jestConfig": "libs/repository/core-controllers/jest.config.js",
-            "passWithNoTests": true
-          }
-        },
-        "build": {
-          "executor": "@nrwl/node:package",
-          "outputs": [
-            "{options.outputPath}"
-          ],
-          "options": {
-            "outputPath": "dist/libs/repository/core-controllers",
-            "tsConfig": "libs/repository/core-controllers/tsconfig.lib.json",
-            "packageJson": "libs/repository/core-controllers/package.json",
-            "main": "libs/repository/core-controllers/src/index.ts",
-            "assets": [
-              "libs/repository/core-controllers/*.md"
-            ]
-          }
-        }
-      }
-    },
     "js-chat": {
       "projectType": "application",
       "root": "apps/js-chat",

@@ -7,7 +7,6 @@ import {
   ConversationQueueModule,
   CONVERSATION_QUEUE_ROOT_MODULE,
 } from '@js-chat/conversation-queue';
-import { RepositoryCoreControllersModule } from '@js-chat/core-controllers';
 import {
   RedisConnectionModule,
   RedisConnectionService,
@@ -28,6 +27,11 @@ import {
   UserService,
 } from '@js-chat/repository-redis';
 import { Module } from '@nestjs/common';
+import { CommandControllerModule } from './controllers/command';
+import { ConversationControllerModule } from './controllers/conversation';
+import { MessageControllerModule } from './controllers/message';
+import { RoomControllerModule } from './controllers/room';
+import { UserControllerModule } from './controllers/user';
 
 @Module({
   imports: [
@@ -37,23 +41,35 @@ import { Module } from '@nestjs/common';
     ConversationQueueModule,
     RedisConnectionModule,
     RedisRepositoryModule,
-    RepositoryCoreControllersModule.register([
+    CommandControllerModule.register([
       {
         provide: COMMAND_REPOSITORY,
         useClass: CommandService,
       },
+      RedisConnectionService,
+    ]),
+    ConversationControllerModule.register([
       {
         provide: CONVERSATION_REPOSITORY,
         useClass: ConversationService,
       },
+      RedisConnectionService,
+    ]),
+    MessageControllerModule.register([
       {
         provide: MESSAGE_REPOSITORY,
         useClass: MessageService,
       },
+      RedisConnectionService,
+    ]),
+    RoomControllerModule.register([
       {
         provide: ROOM_REPOSITORY,
         useClass: RoomService,
       },
+      RedisConnectionService,
+    ]),
+    UserControllerModule.register([
       {
         provide: USER_REPOSITORY,
         useClass: UserService,
